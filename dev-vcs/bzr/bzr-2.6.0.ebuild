@@ -11,7 +11,7 @@ inherit bash-completion-r1 distutils-r1 eutils flag-o-matic versionator
 MY_P=${PN}-${PV}
 SERIES=$(get_version_component_range 1-2)
 
-DESCRIPTION="Bazaar is a next generation distributed version control system."
+DESCRIPTION="Bazaar is a next generation distributed version control system"
 HOMEPAGE="http://bazaar-vcs.org/"
 SRC_URI="http://launchpad.net/bzr/${SERIES}/${PV}/+download/${MY_P}.tar.gz"
 

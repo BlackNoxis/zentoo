@@ -13,7 +13,7 @@ RUBY_FAKEGEM_GEMSPEC="json.gemspec"
 
 inherit multilib ruby-fakegem
 
-DESCRIPTION="A JSON implementation as a Ruby extension."
+DESCRIPTION="A JSON implementation as a Ruby extension"
 HOMEPAGE="http://json.rubyforge.org/"
 LICENSE="|| ( Ruby GPL-2 )"
 

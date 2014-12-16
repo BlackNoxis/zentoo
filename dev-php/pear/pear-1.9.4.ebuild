@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI=5
+
 KEYWORDS="amd64"
 
 DESCRIPTION="PEAR - PHP Extension and Application Repository"
@@ -10,6 +12,7 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
+S="${WORKDIR}"
 
 DEPEND="!<dev-php/PEAR-PEAR-1.8.1
 	~dev-php/PEAR-PEAR-${PV}

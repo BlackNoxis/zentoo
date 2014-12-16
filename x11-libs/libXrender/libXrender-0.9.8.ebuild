@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -12,7 +12,7 @@ DESCRIPTION="X.Org Xrender library"
 KEYWORDS="amd64"
 IUSE=""
 
-RDEPEND="x11-libs/libX11[${MULTILIB_USEDEP}]
-	>=x11-proto/renderproto-0.9.3[${MULTILIB_USEDEP}]
-	x11-proto/xproto[${MULTILIB_USEDEP}]"
+RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+	>=x11-proto/renderproto-0.11.1-r1[${MULTILIB_USEDEP}]
+	>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"

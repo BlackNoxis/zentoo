@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby19 jruby"
+USE_RUBY="ruby19"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.rdoc TODO"
 RUBY_FAKEGEM_DOCDIR="doc/html"
@@ -36,12 +36,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	case ${RUBY} in
-		*jruby)
-			ewarn "Skipping tests since they hang indefinitely."
-			;;
-		*)
-			${RUBY} -S rake test || die
-			;;
-	esac
+	${RUBY} -S rake test || die
 }

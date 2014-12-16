@@ -20,7 +20,7 @@ RUBY_S="${GITHUB_USER}-${GITHUB_PROJECT}-*"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A Ruby driver for MongoDB."
+DESCRIPTION="A Ruby driver for MongoDB"
 HOMEPAGE="http://www.mongodb.org/"
 SRC_URI="https://github.com/${GITHUB_USER}/${GITHUB_PROJECT}/tarball/${PV} -> ${GITHUB_PROJECT}-${PV}.tar.gz"
 

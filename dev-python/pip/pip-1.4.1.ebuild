@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 KEYWORDS="amd64"
 SLOT="0"
-IUSE="zsh-completion"
+IUSE=""
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
@@ -33,9 +33,7 @@ python_install_all() {
 	${EPYTHON} pip/runner.py completion --bash > "${COMPLETION}" || die
 	newbashcomp "${COMPLETION}" ${PN}
 
-	if use zsh-completion ; then
-		${EPYTHON} pip/runner.py completion --zsh > "${COMPLETION}" || die
-		insinto /usr/share/zsh/site-functions
-		newins "${COMPLETION}" _pip
-	fi
+	${EPYTHON} pip/runner.py completion --zsh > "${COMPLETION}" || die
+	insinto /usr/share/zsh/site-functions
+	newins "${COMPLETION}" _pip
 }

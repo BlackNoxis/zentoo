@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -12,12 +12,12 @@ DESCRIPTION="X.Org Xi library"
 KEYWORDS="amd64"
 IUSE=""
 
-RDEPEND=">=x11-libs/libX11-1.4.99.1[${MULTILIB_USEDEP}]
-	>=x11-libs/libXext-1.1[${MULTILIB_USEDEP}]
-	>=x11-libs/libXfixes-5[${MULTILIB_USEDEP}]
-	>=x11-proto/inputproto-2.2.99.1[${MULTILIB_USEDEP}]
-	>=x11-proto/xproto-7.0.13[${MULTILIB_USEDEP}]
-	>=x11-proto/xextproto-7.0.3[${MULTILIB_USEDEP}]"
+RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
+	>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
+	>=x11-proto/inputproto-2.3[${MULTILIB_USEDEP}]
+	>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
+	>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 src_configure() {

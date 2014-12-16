@@ -4,7 +4,7 @@
 
 EAPI=4
 
-USE_RUBY="ruby19 ruby20 jruby"
+USE_RUBY="ruby19 ruby20"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_TASK_DOC="docs"
@@ -36,42 +36,19 @@ all_ruby_prepare() {
 }
 
 each_ruby_prepare() {
-	case ${RUBY} in
-		*jruby)
-			;;
-		*)
-			${RUBY} -Cext/racc extconf.rb || die
-			;;
-	esac
+	${RUBY} -Cext/racc extconf.rb || die
 }
 
 each_ruby_compile() {
-	case ${RUBY} in
-		*jruby)
-			einfo "Under JRuby, racc cannot use the shared object parser, so instead"
-			einfo "you have to rely on the pure Ruby implementation."
-			;;
-		*)
-			emake -Cext/racc
-			# Copy over the file here so that we don't have to do
-			# special ruby install for JRuby and the other
-			# implementations.
-			cp -l ext/racc/cparse$(get_modname) lib/racc/cparse$(get_modname) || die
-			;;
-	esac
+	emake -Cext/racc
+	# Copy over the file here so that we don't have to do
+	# special ruby install for JRuby and the other
+	# implementations.
+	cp -l ext/racc/cparse$(get_modname) lib/racc/cparse$(get_modname) || die
 }
 
 each_ruby_test() {
-	case ${RUBY} in
-		*jruby)
-			ewarn "Using JRuby 1.5.2 the tests are currently badly broken,"
-			ewarn "so they are disabled until a new racc or a new JRuby is"
-			ewarn "released."
-			;;
-		*)
-			${RUBY} -Ilib -S testrb test/test_*.rb || die
-			;;
-	esac
+	${RUBY} -Ilib -S testrb test/test_*.rb || die
 }
 
 all_ruby_install() {

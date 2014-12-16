@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 jruby"
+USE_RUBY="ruby19 ruby20"
 
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
@@ -11,8 +11,8 @@ RUBY_FAKEGEM_EXTRADOC="README.txt"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Library which enable you to define abstract method in Ruby."
-HOMEPAGE="http://rubyforge.org/projects/abstract"
+DESCRIPTION="Library which enable you to define abstract method in Ruby"
+HOMEPAGE="https://rubygems.org/gems/abstract"
 
 LICENSE="Ruby"
 SLOT="0"

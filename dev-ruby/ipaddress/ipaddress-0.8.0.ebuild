@@ -3,7 +3,9 @@
 # $Header: $
 
 EAPI=4
-USE_RUBY="ruby19 jruby"
+
+# ruby20, ruby21 → fails tests
+USE_RUBY="ruby19"
 
 inherit ruby-fakegem
 
@@ -14,3 +16,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE=""
+
+all_ruby_prepare() {
+	# Fix deprecated rake task invocation.
+	sed -i -e 's:rake/rdoctask:rdoc/task:' Rakefile || die
+}

@@ -12,5 +12,5 @@ KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND=""
-DEPEND="x11-proto/xproto[${MULTILIB_USEDEP}]
+DEPEND=">=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
 	${RDEPEND}"

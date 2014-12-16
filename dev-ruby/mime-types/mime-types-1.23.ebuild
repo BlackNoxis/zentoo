@@ -4,15 +4,15 @@
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 jruby"
+USE_RUBY="ruby19 ruby20"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="History.rdoc README.rdoc"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Provides a mailcap-like MIME Content-Type lookup for Ruby."
-HOMEPAGE="http://rubyforge.org/projects/mime-types"
+DESCRIPTION="Provides a mailcap-like MIME Content-Type lookup for Ruby"
+HOMEPAGE="https://github.com/halostatue/mime-types/"
 
 LICENSE="MIT Artistic GPL-2"
 SLOT="0"

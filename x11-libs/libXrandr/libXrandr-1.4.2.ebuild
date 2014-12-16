@@ -12,10 +12,10 @@ DESCRIPTION="X.Org Xrandr library"
 KEYWORDS="amd64"
 IUSE=""
 
-RDEPEND="x11-libs/libX11[${MULTILIB_USEDEP}]
-	x11-libs/libXext[${MULTILIB_USEDEP}]
-	x11-libs/libXrender[${MULTILIB_USEDEP}]
-	x11-proto/randrproto[${MULTILIB_USEDEP}]
-	x11-proto/renderproto[${MULTILIB_USEDEP}]
-	x11-proto/xextproto[${MULTILIB_USEDEP}]"
+RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
+	>=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]
+	>=x11-proto/randrproto-1.4.0-r1[${MULTILIB_USEDEP}]
+	>=x11-proto/renderproto-0.11.1-r1[${MULTILIB_USEDEP}]
+	>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"

@@ -12,5 +12,5 @@ DESCRIPTION="X.Org X authorization library"
 KEYWORDS="amd64"
 IUSE=""
 
-RDEPEND="x11-proto/xproto[${MULTILIB_USEDEP}]"
+RDEPEND=">=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"

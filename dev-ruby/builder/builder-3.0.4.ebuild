@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=4
-USE_RUBY="ruby19 jruby"
+USE_RUBY="ruby19"
 
 RUBY_FAKEGEM_TASK_TEST="test_all"
 

@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=5
-USE_RUBY="ruby19 ruby20"
+USE_RUBY="ruby19 ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -14,8 +14,7 @@ RUBY_FAKEGEM_DOCDIR="doc"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Log4r is a comprehensive and flexible logging library written in
-Ruby for use in Ruby programs."
+DESCRIPTION="A comprehensive and flexible logging library written in Ruby for use in Ruby programs"
 HOMEPAGE="http://log4r.sourceforge.net/"
 IUSE=""
 

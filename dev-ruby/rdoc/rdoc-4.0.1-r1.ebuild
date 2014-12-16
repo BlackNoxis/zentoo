@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=5
-USE_RUBY="ruby18 ruby19 ruby20 jruby"
+USE_RUBY="ruby19 ruby20"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -34,9 +34,6 @@ ruby_add_rdepend "=dev-ruby/json-1* >=dev-ruby/json-1.4"
 RDEPEND="${RDEPEND}
 	ruby_targets_ruby19? (
 		>=dev-lang/ruby-1.9.2:1.9
-	)
-	ruby_targets_ruby18? (
-		>=dev-lang/ruby-1.8.7:1.8
 	)"
 
 all_ruby_prepare() {

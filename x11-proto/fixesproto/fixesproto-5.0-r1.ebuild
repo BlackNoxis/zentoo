@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -12,5 +12,5 @@ DESCRIPTION="X.Org Fixes protocol headers"
 KEYWORDS="amd64"
 IUSE=""
 
-RDEPEND=">=x11-proto/xextproto-7.0.99.1[${MULTILIB_USEDEP}]"
+RDEPEND=">=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"

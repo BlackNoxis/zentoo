@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 jruby"
+USE_RUBY="ruby19 ruby20"
 
 RUBY_FAKEGEM_TASK_DOC="docs"
 
@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="template"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Hoe extends rake to provide full project automation."
+DESCRIPTION="Hoe extends rake to provide full project automation"
 HOMEPAGE="http://seattlerb.rubyforge.org/"
 
 LICENSE="MIT"

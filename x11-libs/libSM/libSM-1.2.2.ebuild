@@ -13,9 +13,9 @@ DESCRIPTION="X.Org Session Management library"
 KEYWORDS="amd64"
 IUSE="doc ipv6 +uuid"
 
-RDEPEND=">=x11-libs/libICE-1.0.5[${MULTILIB_USEDEP}]
+RDEPEND=">=x11-libs/libICE-1.0.8-r1[${MULTILIB_USEDEP}]
 	x11-libs/xtrans
-	x11-proto/xproto[${MULTILIB_USEDEP}]
+	>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
 	!elibc_FreeBSD? ( !elibc_SunOS? ( !elibc_Darwin? (
 		uuid? (
 			>=sys-apps/util-linux-2.16

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit libtool eutils texlive-common
 
-DESCRIPTION="An extended version of pdfTeX using Lua as an embedded scripting language."
+DESCRIPTION="An extended version of pdfTeX using Lua as an embedded scripting language"
 HOMEPAGE="http://www.luatex.org/"
 SRC_URI="http://foundry.supelec.fr/gf/download/frsrelease/392/1730/${PN}-beta-${PV}.tar.bz2
 	http://foundry.supelec.fr/gf/download/frsrelease/392/1732/${PN}-beta-${PV}-doc.tar.bz2"
@@ -33,6 +33,7 @@ src_prepare() {
 	has_version '>=app-text/poppler-0.18.0:0' && epatch "${FILESDIR}/poppler018.patch"
 	has_version '>=app-text/poppler-0.20.0:0' && epatch "${FILESDIR}/poppler020.patch"
 	has_version '>=app-text/poppler-0.22.0:0' && epatch "${FILESDIR}/poppler022.patch"
+	has_version '>=app-text/poppler-0.26.0:0' && epatch "${FILESDIR}/poppler026-backport.patch"
 	epatch "${FILESDIR}/kpathsea2012.patch" \
 		"${FILESDIR}/remove-zlib-version-check.patch"
 	S="${S}/build-aux" elibtoolize --shallow

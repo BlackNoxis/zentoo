@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=4
-USE_RUBY="ruby18 ruby19 ruby20 jruby"
+USE_RUBY="ruby19 ruby20"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGES README.rdoc TODO"
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_TASK_TEST=""
 inherit bash-completion-r1 ruby-fakegem
 
 DESCRIPTION="Make-like scripting in Ruby"
-HOMEPAGE="http://rake.rubyforge.org/"
+HOMEPAGE="https://github.com/jimweirich/rake"
 
 LICENSE="MIT"
 SLOT="0"
@@ -37,18 +37,6 @@ all_ruby_prepare() {
 
 	# Decompress the file. The compressed version has errors, ignore them.
 	zcat doc/rake.1.gz > doc/rake.1
-}
-
-each_ruby_prepare() {
-	case ${RUBY} in
-		*jruby)
-			# Remove failing tests. These are not failures in rake but
-			# in our packaging of jruby. They are already present in
-			# rake 0.9.2.2, so avoid them for now so that we can at
-			# least bump 0.9.6 which is needed for ruby20.
-			rm test/test_rake_{functional,rules}.rb || die
-			;;
-	esac
 }
 
 all_ruby_compile() {

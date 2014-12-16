@@ -12,11 +12,11 @@ DESCRIPTION="X.Org X Toolkit Intrinsics library"
 KEYWORDS="amd64"
 IUSE=""
 
-RDEPEND="x11-libs/libX11[${MULTILIB_USEDEP}]
-	x11-libs/libSM[${MULTILIB_USEDEP}]
-	x11-libs/libICE[${MULTILIB_USEDEP}]
-	x11-proto/xproto[${MULTILIB_USEDEP}]
-	x11-proto/kbproto[${MULTILIB_USEDEP}]"
+RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+	>=x11-libs/libSM-1.2.1-r1[${MULTILIB_USEDEP}]
+	>=x11-libs/libICE-1.0.8-r1[${MULTILIB_USEDEP}]
+	>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
+	>=x11-proto/kbproto-1.0.6-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 src_configure() {

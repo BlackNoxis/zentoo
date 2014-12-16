@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -12,9 +12,9 @@ DESCRIPTION="X.Org Xcursor library"
 KEYWORDS="amd64"
 IUSE=""
 
-RDEPEND=">=x11-libs/libXrender-0.8.2[${MULTILIB_USEDEP}]
-	x11-libs/libXfixes[${MULTILIB_USEDEP}]
-	x11-libs/libX11[${MULTILIB_USEDEP}]"
+RDEPEND=">=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]
+	>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
+	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 XORG_CONFIGURE_OPTIONS=(

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -13,10 +13,10 @@ DESCRIPTION="X.Org Xmu library"
 KEYWORDS="amd64"
 IUSE="ipv6"
 
-RDEPEND="x11-libs/libXt[${MULTILIB_USEDEP}]
-	x11-libs/libXext[${MULTILIB_USEDEP}]
-	x11-libs/libX11[${MULTILIB_USEDEP}]
-	x11-proto/xextproto[${MULTILIB_USEDEP}]"
+RDEPEND=">=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]
+	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
+	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+	>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 src_configure() {

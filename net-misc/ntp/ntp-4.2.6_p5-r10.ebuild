@@ -24,9 +24,9 @@ DEPEND=">=sys-libs/ncurses-5.2
 	!openntpd? ( !net-misc/openntpd )
 	snmp? ( net-analyzer/net-snmp )
 	ssl? ( dev-libs/openssl )
-	selinux? ( sec-policy/selinux-ntp )
 	parse-clocks? ( net-misc/pps-tools )"
 RDEPEND="${DEPEND}
+	selinux? ( sec-policy/selinux-ntp )
 	vim-syntax? ( app-vim/ntp-syntax )"
 PDEPEND="openntpd? ( net-misc/openntpd )"
 
@@ -107,12 +107,13 @@ src_install() {
 		rm usr/share/man/*/ntpd.8 || die
 	else
 		systemd_newunit "${FILESDIR}"/ntpd.service-r1 ntpd.service
+		use caps && sed -i '/ExecStart/ s|$| -u ntp:ntp|' "${ED}"/usr/lib/systemd/system/ntpd.service
 		systemd_enable_ntpunit 60-ntpd ntpd.service
 	fi
 
 	systemd_dounit "${FILESDIR}"/ntpdate.service
 	systemd_install_serviced "${FILESDIR}"/ntpdate.service.conf
-	systemd_dounit "${FILESDIR}"/sntp.service
+	systemd_newunit "${FILESDIR}"/sntp.service-r1 sntp.service
 	systemd_install_serviced "${FILESDIR}"/sntp.service.conf
 }
 

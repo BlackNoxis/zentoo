@@ -20,17 +20,18 @@ EGIT_REPO_URI="git://anongit.freedesktop.org/git/xcb/libxcb"
 KEYWORDS="amd64"
 IUSE="selinux xkb"
 
-RDEPEND="dev-libs/libpthread-stubs[${MULTILIB_USEDEP}]
-	x11-libs/libXau[${MULTILIB_USEDEP}]
-	x11-libs/libXdmcp[${MULTILIB_USEDEP}]"
+RDEPEND=">=dev-libs/libpthread-stubs-0.3-r1[${MULTILIB_USEDEP}]
+	>=x11-libs/libXau-1.0.7-r1[${MULTILIB_USEDEP}]
+	>=x11-libs/libXdmcp-1.1.1-r1[${MULTILIB_USEDEP}]"
 # Note: ${PYTHON_USEDEP} needs to go verbatim
 DEPEND="${RDEPEND}
 	dev-libs/libxslt
+	${PYTHON_DEPS}
 	$(python_gen_any_dep \
 		">=x11-proto/xcb-proto-1.10[${MULTILIB_USEDEP},\${PYTHON_USEDEP}]")"
 
 python_check_deps() {
-	has_version ">=x11-proto/xcb-proto-1.10[${MULTILIB_USEDEP},${PYTHON_USEDEP}]"
+	has_version --host-root ">=x11-proto/xcb-proto-1.10[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

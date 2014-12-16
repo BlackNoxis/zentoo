@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 jruby"
+USE_RUBY="ruby19 ruby20"
 
 RUBY_FAKEGEM_TASK_DOC="docs"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -23,10 +23,10 @@ IUSE=""
 ruby_add_rdepend '>=dev-ruby/json-1.1.7'
 
 ruby_add_bdepend "
-	doc? ( dev-ruby/hoe )
+	doc? ( >=dev-ruby/hoe-2.13 )
 	test? (
 		virtual/ruby-ssl
-		dev-ruby/hoe
+		>=dev-ruby/hoe-2.13
 	)"
 
 all_ruby_prepare() {

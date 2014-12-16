@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -24,7 +24,7 @@ COMMON_DEPEND="virtual/awk
 	net-libs/libpcap
 	media-libs/gd
 	media-libs/libpng
-	net-analyzer/rrdtool
+	net-analyzer/rrdtool[graph]
 	ssl? ( dev-libs/openssl )
 	sys-libs/zlib
 	>=dev-libs/geoip-1.4.5

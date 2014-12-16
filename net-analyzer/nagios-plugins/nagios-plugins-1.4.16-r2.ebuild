@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -20,7 +20,7 @@ IUSE="+ssl samba mysql postgres ldap snmp nagios-dns nagios-ntp nagios-ping nagi
 
 DEPEND="ldap? ( >=net-nds/openldap-2.0.25 )
 	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql-base )
+	postgres? ( virtual/postgresql )
 	ssl? (
 		!gnutls? ( >=dev-libs/openssl-0.9.6g )
 		gnutls? ( net-libs/gnutls )

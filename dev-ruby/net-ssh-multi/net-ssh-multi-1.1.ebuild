@@ -12,8 +12,7 @@ RUBY_FAKEGEM_TASK_TEST="none"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Net::SSH::Multi is a library for controlling multiple Net::SSH
-connections via a single interface."
+DESCRIPTION="A library for controlling multiple Net::SSH connections via a single interface"
 HOMEPAGE="http://net-ssh.rubyforge.org/multi"
 SRC_URI="https://github.com/net-ssh/${PN}/tarball/v${PV} -> ${P}.tgz"
 RUBY_S="net-ssh-${PN}-*"

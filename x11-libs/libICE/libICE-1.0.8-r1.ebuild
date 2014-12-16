@@ -14,7 +14,7 @@ KEYWORDS="amd64"
 IUSE="ipv6"
 
 RDEPEND="x11-libs/xtrans
-	x11-proto/xproto[${MULTILIB_USEDEP}]"
+	>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {

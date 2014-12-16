@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -12,12 +12,12 @@ DESCRIPTION="X.Org Xft library"
 KEYWORDS="amd64"
 IUSE=""
 
-RDEPEND=">=x11-libs/libXrender-0.8.2[${MULTILIB_USEDEP}]
-	x11-libs/libX11[${MULTILIB_USEDEP}]
-	x11-libs/libXext[${MULTILIB_USEDEP}]
-	media-libs/freetype[${MULTILIB_USEDEP}]
-	media-libs/fontconfig[${MULTILIB_USEDEP}]
-	x11-proto/xproto[${MULTILIB_USEDEP}]
+RDEPEND=">=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]
+	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
+	>=media-libs/freetype-2.5.0.1[${MULTILIB_USEDEP}]
+	>=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}]
+	>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
 	virtual/ttf-fonts"
 DEPEND="${RDEPEND}"
 

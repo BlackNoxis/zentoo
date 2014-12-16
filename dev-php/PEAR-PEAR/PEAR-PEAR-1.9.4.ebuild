@@ -40,7 +40,7 @@ pkg_setup() {
 	elog
 	elog "If you want to change the above values, you need to set"
 	elog "PEAR_CACHEDIR, PEAR_DOWNLOADDIR and PEAR_TEMPDIR variable(s)"
-	elog "accordingly in /etc/make.conf and re-emerge ${PN}."
+	elog "accordingly in /etc/portage/make.conf and re-emerge ${PN}."
 	elog
 }
 

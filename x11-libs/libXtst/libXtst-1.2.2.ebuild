@@ -13,10 +13,10 @@ DESCRIPTION="X.Org Xlib-based client API for the XTEST & RECORD extensions libra
 KEYWORDS="amd64"
 IUSE=""
 
-RDEPEND="x11-libs/libX11[${MULTILIB_USEDEP}]
-	>=x11-libs/libXext-1.0.99.4[${MULTILIB_USEDEP}]
-	x11-libs/libXi[${MULTILIB_USEDEP}]
-	>=x11-proto/recordproto-1.13.99.1[${MULTILIB_USEDEP}]
-	>=x11-proto/xextproto-7.0.99.3[${MULTILIB_USEDEP}]
-	x11-proto/inputproto[${MULTILIB_USEDEP}]"
+RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
+	>=x11-libs/libXi-1.7.2[${MULTILIB_USEDEP}]
+	>=x11-proto/recordproto-1.14.2-r1[${MULTILIB_USEDEP}]
+	>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
+	>=x11-proto/inputproto-2.3[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"

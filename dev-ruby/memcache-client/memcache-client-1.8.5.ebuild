@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI="2"
-USE_RUBY="ruby19 jruby"
+USE_RUBY="ruby19"
 
 RUBY_FAKEGEM_TASK_TEST="none"
 
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="FAQ.rdoc History.rdoc README.rdoc"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A ruby library for accessing memcached."
+DESCRIPTION="A ruby library for accessing memcached"
 HOMEPAGE="http://github.com/mperham/memcache-client"
 LICENSE="MIT"
 SLOT="0"

@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 jruby"
+USE_RUBY="ruby19 ruby20"
 
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="ChangeLog KNOWN-ISSUES README.rdoc SPEC"

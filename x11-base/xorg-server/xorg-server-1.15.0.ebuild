@@ -15,7 +15,7 @@ KEYWORDS="amd64"
 IUSE_SERVERS="dmx kdrive xnest xorg xvfb"
 IUSE="${IUSE_SERVERS} ipv6 minimal nptl selinux +suid tslib +udev unwind"
 
-RDEPEND=">=app-admin/eselect-opengl-1.0.8
+CDEPEND=">=app-admin/eselect-opengl-1.0.8
 	dev-libs/openssl
 	media-libs/freetype
 	>=x11-apps/iceauth-1.0.2
@@ -58,10 +58,9 @@ RDEPEND=">=app-admin/eselect-opengl-1.0.8
 	tslib? ( >=x11-libs/tslib-1.0 )
 	udev? ( >=virtual/udev-150 )
 	unwind? ( sys-libs/libunwind )
-	>=x11-apps/xinit-1.3
-	selinux? ( sec-policy/selinux-xserver )"
+	>=x11-apps/xinit-1.3"
 
-DEPEND="${RDEPEND}
+DEPEND="${CDEPEND}
 	sys-devel/flex
 	>=x11-proto/bigreqsproto-1.1.0
 	>=x11-proto/compositeproto-0.4
@@ -101,6 +100,10 @@ DEPEND="${RDEPEND}
 		>=x11-proto/xf86driproto-2.1.0
 		>=x11-proto/dri2proto-2.8
 	)"
+
+RDEPEND="${CDEPEND}
+	selinux? ( sec-policy/selinux-xserver )
+"
 
 PDEPEND="
 	xorg? ( >=x11-base/xorg-drivers-$(get_version_component_range 1-2) )"
@@ -215,11 +218,6 @@ pkg_postinst() {
 		ewarn "You can rebuild all installed packages in the x11-drivers"
 		ewarn "category using this command:"
 		ewarn "	emerge @x11-module-rebuild"
-	fi
-
-	if use udev && has_version virtual/udev[-keymap]; then
-		ewarn "virtual/udev was built without keymap support. This may cause input device"
-		ewarn "autoconfiguration to fail."
 	fi
 }
 

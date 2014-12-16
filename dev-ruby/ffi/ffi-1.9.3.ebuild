@@ -6,7 +6,7 @@ EAPI=5
 
 # jruby → unneeded, this is part of the standard JRuby distribution, and
 # would just install a dummy.
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby19 ruby20"
 
 RUBY_FAKEGEM_TASK_TEST="specs"
 
@@ -37,11 +37,20 @@ ruby_add_rdepend "virtual/ruby-threads"
 all_ruby_prepare() {
 	sed -i -e '/tasks/ s:^:#:' \
 		-e '/Gem::Tasks/,/end/ s:^:#:' Rakefile || die
+
+	# Fix Makefile for tests
+	sed -i -e '/CCACHE :=/ s:^:#:' \
+		-e 's/-O2//' \
+		-e 's/^CFLAGS =/CFLAGS +=/' libtest/GNUmakefile || die
 }
 
 each_ruby_compile() {
 	${RUBY} -S rake compile || die "compile failed"
 	${RUBY} -S rake -f gen/Rakefile || die "types.conf generation failed"
+}
+
+each_ruby_test() {
+	CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" ${RUBY} -S rake specs || die
 }
 
 all_ruby_install() {
