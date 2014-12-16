@@ -27,8 +27,6 @@ if [[ ! ${_MULTIBUILD} ]]; then
 
 inherit multiprocessing
 
-DEPEND="userland_GNU? ( >=sys-apps/coreutils-8.5 )"
-
 # @ECLASS-VARIABLE: MULTIBUILD_VARIANTS
 # @DESCRIPTION:
 # An array specifying all enabled variants which multibuild_foreach*
@@ -238,6 +236,7 @@ run_in_build_dir() {
 	[[ ${#} -ne 0 ]] || die "${FUNCNAME}: no command specified."
 	[[ ${BUILD_DIR} ]] || die "${FUNCNAME}: BUILD_DIR not set."
 
+	mkdir -p "${BUILD_DIR}" || die
 	pushd "${BUILD_DIR}" >/dev/null || die
 	"${@}"
 	ret=${?}

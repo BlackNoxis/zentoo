@@ -98,17 +98,17 @@ if version_is_at_least 2.18 ; then
 else
 	LICENSE="|| ( GPL-2 LGPL-2 )"
 fi
-IUSE="cxx nls multitarget multislot static-libs test vanilla"
+IUSE="cxx multislot multitarget nls static-libs test vanilla"
 if version_is_at_least 2.19 ; then
 	IUSE+=" zlib"
 fi
-if use multislot ; then
+if ! version_is_at_least 2.23.90 || [[ ${PV} == "9999" ]] || use multislot ; then
 	SLOT="${BVER}"
 else
 	SLOT="0"
 fi
 
-RDEPEND=">=sys-devel/binutils-config-1.9"
+RDEPEND=">=sys-devel/binutils-config-3"
 in_iuse zlib && RDEPEND+=" zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	test? ( dev-util/dejagnu )
@@ -219,6 +219,15 @@ _eprefix_init() {
 	has "${EAPI:-0}" 0 1 2 && ED=${D} EPREFIX= EROOT=${ROOT}
 }
 
+# Intended for ebuilds to override to set their own versioning information.
+toolchain-binutils_bugurl() {
+	printf "http://bugs.gentoo.org/"
+}
+toolchain-binutils_pkgversion() {
+	printf "Gentoo ${BVER}"
+	[[ -n ${PATCHVER} ]] && printf " p${PATCHVER}"
+}
+
 toolchain-binutils_src_configure() {
 	_eprefix_init
 
@@ -297,11 +306,15 @@ toolchain-binutils_src_configure() {
 		# Newer versions (>=2.24) make this an explicit option. #497268
 		--enable-install-libiberty
 		--disable-werror
-		--with-bugurl=http://bugs.gentoo.org/
+		--with-bugurl="$(toolchain-binutils_bugurl)"
+		--with-pkgversion="$(toolchain-binutils_pkgversion)"
 		$(use_enable static-libs static)
 		${EXTRA_ECONF}
 		# Disable modules that are in a combined binutils/gdb tree. #490566
 		--disable-{gdb,libdecnumber,readline,sim}
+		# Strip out broken static link flags.
+		# https://gcc.gnu.org/PR56750
+		--without-stage1-ldflags
 	)
 	echo ./configure "${myconf[@]}"
 	"${S}"/configure "${myconf[@]}" || die
@@ -427,32 +440,12 @@ toolchain-binutils_src_install() {
 		newdoc README README.elf2flt
 	fi
 
-	# Now, some binutils are tricky and actually provide
-	# for multiple TARGETS.  Really, we're talking just
-	# 32bit/64bit support (like mips/ppc/sparc).  Here
-	# we want to tell binutils-config that it's cool if
-	# it generates multiple sets of binutil symlinks.
-	# e.g. sparc gets {sparc,sparc64}-unknown-linux-gnu
-	local targ=${CTARGET/-*} src="" dst=""
-	local FAKE_TARGETS=${CTARGET}
-	case ${targ} in
-		mips*)    src="mips"    dst="mips64";;
-		powerpc*) src="powerpc" dst="powerpc64";;
-		s390*)    src="s390"    dst="s390x";;
-		sparc*)   src="sparc"   dst="sparc64";;
-	esac
-	case ${targ} in
-		mips64*|powerpc64*|s390x*|sparc64*) targ=${src} src=${dst} dst=${targ};;
-	esac
-	[[ -n ${src}${dst} ]] && FAKE_TARGETS="${FAKE_TARGETS} ${CTARGET/${src}/${dst}}"
-
 	# Generate an env.d entry for this binutils
 	insinto /etc/env.d/binutils
 	cat <<-EOF > "${T}"/env.d
 		TARGET="${CTARGET}"
 		VER="${BVER}"
 		LIBPATH="${EPREFIX}${LIBPATH}"
-		FAKE_TARGETS="${FAKE_TARGETS}"
 	EOF
 	newins "${T}"/env.d ${CTARGET}-${BVER}
 

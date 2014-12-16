@@ -168,7 +168,7 @@ tc-export() {
 # @FUNCTION: tc-is-cross-compiler
 # @RETURN: Shell true if we are using a cross-compiler, shell false otherwise
 tc-is-cross-compiler() {
-	return $([[ ${CBUILD:-${CHOST}} != ${CHOST} ]])
+	[[ ${CBUILD:-${CHOST}} != ${CHOST} ]]
 }
 
 # @FUNCTION: tc-is-softfloat
@@ -209,7 +209,7 @@ tc-is-static-only() {
 	local host=${CTARGET:-${CHOST}}
 
 	# *MiNT doesn't have shared libraries, only platform so far
-	return $([[ ${host} == *-mint* ]])
+	[[ ${host} == *-mint* ]]
 }
 
 # @FUNCTION: tc-export_build_env
@@ -414,6 +414,7 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 				echo ppc
 			fi
 			;;
+		riscv*)		echo riscv;;
 		s390*)		echo s390;;
 		score)		echo score;;
 		sh64*)		ninj sh64 sh;;
@@ -577,37 +578,43 @@ gcc-specs-directive() {
 gcc-specs-relro() {
 	local directive
 	directive=$(gcc-specs-directive link_command)
-	return $([[ "${directive/\{!norelro:}" != "${directive}" ]])
+	[[ "${directive/\{!norelro:}" != "${directive}" ]]
 }
 # Returns true if gcc sets now
 gcc-specs-now() {
 	local directive
 	directive=$(gcc-specs-directive link_command)
-	return $([[ "${directive/\{!nonow:}" != "${directive}" ]])
+	[[ "${directive/\{!nonow:}" != "${directive}" ]]
 }
 # Returns true if gcc builds PIEs
 gcc-specs-pie() {
 	local directive
 	directive=$(gcc-specs-directive cc1)
-	return $([[ "${directive/\{!nopie:}" != "${directive}" ]])
+	[[ "${directive/\{!nopie:}" != "${directive}" ]]
 }
 # Returns true if gcc builds with the stack protector
 gcc-specs-ssp() {
 	local directive
 	directive=$(gcc-specs-directive cc1)
-	return $([[ "${directive/\{!fno-stack-protector:}" != "${directive}" ]])
+	[[ "${directive/\{!fno-stack-protector:}" != "${directive}" ]]
 }
 # Returns true if gcc upgrades fstack-protector to fstack-protector-all
 gcc-specs-ssp-to-all() {
 	local directive
 	directive=$(gcc-specs-directive cc1)
-	return $([[ "${directive/\{!fno-stack-protector-all:}" != "${directive}" ]])
+	[[ "${directive/\{!fno-stack-protector-all:}" != "${directive}" ]]
 }
 # Returns true if gcc builds with fno-strict-overflow
 gcc-specs-nostrict() {
 	local directive
 	directive=$(gcc-specs-directive cc1)
-	return $([[ "${directive/\{!fstrict-overflow:}" != "${directive}" ]])
+	[[ "${directive/\{!fstrict-overflow:}" != "${directive}" ]]
+}
+# Returns true if gcc builds with fstack-check
+gcc-specs-stack-check() {
+	local directive
+	directive=$(gcc-specs-directive cc1)
+	[[ "${directive/\{!fno-stack-check:}" != "${directive}" ]]
 }
 
 

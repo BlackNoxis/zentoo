@@ -13,7 +13,9 @@
 # packages supporting being installed for multiple Python
 # implementations.
 #
-# This eclass sets correct IUSE and REQUIRED_USE. It exports PYTHON_DEPS
+# This eclass sets correct IUSE. Modification of REQUIRED_USE has to
+# be done by the author of the ebuild (but PYTHON_REQUIRED_USE is
+# provided for convenience, see below). python-r1 exports PYTHON_DEPS
 # and PYTHON_USEDEP so you can create correct dependencies for your
 # package easily. It also provides methods to easily run a command for
 # each enabled Python implementation and duplicate the sources for them.
@@ -261,7 +263,7 @@ _python_validate_useflags() {
 #
 # Example:
 # @CODE
-# PYTHON_COMPAT=( python{2_7,3_2} )
+# PYTHON_COMPAT=( python{2_7,3_4} )
 # DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
 # @CODE
 #
@@ -292,7 +294,7 @@ python_gen_usedep() {
 	[[ ${matches[@]} ]] || die "No supported implementations match python_gen_usedep patterns: ${@}"
 
 	local out=${matches[@]}
-	echo ${out// /,}
+	echo "${out// /,}"
 }
 
 # @FUNCTION: python_gen_useflags
@@ -304,7 +306,7 @@ python_gen_usedep() {
 #
 # Example:
 # @CODE
-# PYTHON_COMPAT=( python{2_7,3_2} )
+# PYTHON_COMPAT=( python{2_7,3_4} )
 # REQUIRED_USE="doc? ( || ( $(python_gen_useflags python2*) ) )"
 # @CODE
 #
@@ -329,7 +331,7 @@ python_gen_useflags() {
 		done
 	done
 
-	echo ${matches[@]}
+	echo "${matches[@]}"
 }
 
 # @FUNCTION: python_gen_cond_dep
@@ -367,24 +369,26 @@ python_gen_cond_dep() {
 	local dep=${1}
 	shift
 
-	# substitute ${PYTHON_USEDEP} if used
-	if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
-		local PYTHON_USEDEP=$(python_gen_usedep "${@}")
-		dep=${dep//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
-	fi
-
 	for impl in "${PYTHON_COMPAT[@]}"; do
 		_python_impl_supported "${impl}" || continue
 
 		for pattern; do
 			if [[ ${impl} == ${pattern} ]]; then
+				# substitute ${PYTHON_USEDEP} if used
+				# (since python_gen_usedep() will not return ${PYTHON_USEDEP}
+				#  the code is run at most once)
+				if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
+					local PYTHON_USEDEP=$(python_gen_usedep "${@}")
+					dep=${dep//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
+				fi
+
 				matches+=( "python_targets_${impl}? ( ${dep} )" )
 				break
 			fi
 		done
 	done
 
-	echo ${matches[@]}
+	echo "${matches[@]}"
 }
 
 # @ECLASS-VARIABLE: BUILD_DIR
@@ -562,7 +566,7 @@ _python_check_USE_PYTHON() {
 
 			local abi
 			case "${impl}" in
-				pypy|python3_4)
+				pypy|pypy3|python3_4)
 					# unsupported in python.eclass
 					continue
 					;;
@@ -782,6 +786,8 @@ python_replicate_script() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	_python_replicate_script() {
+		local _PYTHON_FIX_SHEBANG_QUIET=1
+
 		if _python_want_python_exec2; then
 			local PYTHON_SCRIPTDIR
 			python_export PYTHON_SCRIPTDIR
@@ -791,7 +797,7 @@ python_replicate_script() {
 				doexe "${files[@]}"
 			)
 
-			_python_rewrite_shebang "${EPYTHON}" \
+			python_fix_shebang -q \
 				"${files[@]/*\//${D%/}/${PYTHON_SCRIPTDIR}/}"
 		else
 			local f
@@ -799,7 +805,7 @@ python_replicate_script() {
 				cp -p "${f}" "${f}-${EPYTHON}" || die
 			done
 
-			_python_rewrite_shebang "${EPYTHON}" \
+			python_fix_shebang -q \
 				"${files[@]/%/-${EPYTHON}}"
 		fi
 	}

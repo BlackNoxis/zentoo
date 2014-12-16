@@ -163,7 +163,7 @@ qeerror() { qout eerror "${@}" ; }
 # done by including the configfile, and printing the variable with Make.
 # It WILL break if your makefile has missing dependencies!
 getfilevar() {
-	local ERROR basefname basedname myARCH="${ARCH}"
+	local ERROR basefname basedname myARCH="${ARCH}" M="${S}"
 	ERROR=0
 
 	[ -z "${1}" ] && ERROR=1
@@ -181,8 +181,11 @@ getfilevar() {
 
 		# We use nonfatal because we want the caller to take care of things #373151
 		[[ ${EAPI:-0} == [0123] ]] && nonfatal() { "$@"; }
+		case ${EBUILD_PHASE_FUNC} in
+			pkg_info|pkg_nofetch|pkg_pretend) M="${T}" ;;
+		esac
 		echo -e "e:\\n\\t@echo \$(${1})\\ninclude ${basefname}" | \
-			nonfatal emake -C "${basedname}" M="${S}" ${BUILD_FIXES} -s -f - 2>/dev/null
+			nonfatal emake -C "${basedname}" M="${M}" ${BUILD_FIXES} -s -f - 2>/dev/null
 
 		ARCH=${myARCH}
 	fi
@@ -676,139 +679,7 @@ check_modules_supported() {
 # It checks the kernel config options specified by CONFIG_CHECK. It dies only when a required config option (i.e.
 # the prefix ~ is not used) doesn't satisfy the directive.
 check_extra_config() {
-	local config negate die error reworkmodulenames
-	local soft_errors_count=0 hard_errors_count=0 config_required=0
-	# store the value of the QA check, because otherwise we won't catch usages
-	# after if check_extra_config is called AND other direct calls are done
-	# later.
-	local old_LINUX_CONFIG_EXISTS_DONE="${_LINUX_CONFIG_EXISTS_DONE}"
-
-	# if we haven't determined the version yet, we need to
-	linux-info_get_any_version
-
-	# Determine if we really need a .config. The only time when we don't need
-	# one is when all of the CONFIG_CHECK options are prefixed with "~".
-	for config in ${CONFIG_CHECK}; do
-		if [[ "${config:0:1}" != "~" ]]; then
-			config_required=1
-			break
-		fi
-	done
-
-	if [[ ${config_required} == 0 ]]; then
-		# In the case where we don't require a .config, we can now bail out
-		# if the user has no .config as there is nothing to do. Otherwise
-		# code later will cause a failure due to missing .config.
-		if ! linux_config_exists; then
-			ewarn "Unable to check for the following kernel config options due"
-			ewarn "to absence of any configured kernel sources or compiled"
-			ewarn "config:"
-			for config in ${CONFIG_CHECK}; do
-				local_error="ERROR_${config#\~}"
-				msg="${!local_error}"
-				if [[ "x${msg}" == "x" ]]; then
-					local_error="WARNING_${config#\~}"
-					msg="${!local_error}"
-				fi
-				ewarn " - ${config#\~}${msg:+ - }${msg}"
-			done
-			ewarn "You're on your own to make sure they are set if needed."
-			export LINUX_CONFIG_EXISTS_DONE="${old_LINUX_CONFIG_EXISTS_DONE}"
-			return 0
-		fi
-	else
-		require_configured_kernel
-	fi
-
-	einfo "Checking for suitable kernel configuration options..."
-
-	for config in ${CONFIG_CHECK}
-	do
-		# if we specify any fatal, ensure we honor them
-		die=1
-		error=0
-		negate=0
-		reworkmodulenames=0
-
-		if [[ ${config:0:1} == "~" ]]; then
-			die=0
-			config=${config:1}
-		elif [[ ${config:0:1} == "@" ]]; then
-			die=0
-			reworkmodulenames=1
-			config=${config:1}
-		fi
-		if [[ ${config:0:1} == "!" ]]; then
-			negate=1
-			config=${config:1}
-		fi
-
-		if [[ ${negate} == 1 ]]; then
-			linux_chkconfig_present ${config} && error=2
-		elif [[ ${reworkmodulenames} == 1 ]]; then
-			local temp_config="${config//*:}" i n
-			config="${config//:*}"
-			if linux_chkconfig_present ${config}; then
-				for i in ${MODULE_NAMES}; do
-					n="${i//${temp_config}}"
-					[[ -z ${n//\(*} ]] && \
-						MODULE_IGNORE="${MODULE_IGNORE} ${temp_config}"
-				done
-				error=2
-			fi
-		else
-			linux_chkconfig_present ${config} || error=1
-		fi
-
-		if [[ ${error} > 0 ]]; then
-			local report_func="eerror" local_error
-			local_error="ERROR_${config}"
-			local_error="${!local_error}"
-
-			if [[ -z "${local_error}" ]]; then
-				# using old, deprecated format.
-				local_error="${config}_ERROR"
-				local_error="${!local_error}"
-			fi
-			if [[ ${die} == 0 && -z "${local_error}" ]]; then
-				#soft errors can be warnings
-				local_error="WARNING_${config}"
-				local_error="${!local_error}"
-				if [[ -n "${local_error}" ]] ; then
-					report_func="ewarn"
-				fi
-			fi
-
-			if [[ -z "${local_error}" ]]; then
-				[[ ${error} == 1 ]] \
-					&& local_error="is not set when it should be." \
-					|| local_error="should not be set. But it is."
-				local_error="CONFIG_${config}:\t ${local_error}"
-			fi
-			if [[ ${die} == 0 ]]; then
-				${report_func} "  ${local_error}"
-				soft_errors_count=$[soft_errors_count + 1]
-			else
-				${report_func} "  ${local_error}"
-				hard_errors_count=$[hard_errors_count + 1]
-			fi
-		fi
-	done
-
-	if [[ ${hard_errors_count} > 0 ]]; then
-		eerror "Please check to make sure these options are set correctly."
-		eerror "Failure to do so may cause unexpected problems."
-		eerror "Once you have satisfied these options, please try merging"
-		eerror "this package again."
-		export LINUX_CONFIG_EXISTS_DONE="${old_LINUX_CONFIG_EXISTS_DONE}"
-		die "Incorrect kernel configuration options"
-	elif [[ ${soft_errors_count} > 0 ]]; then
-		ewarn "Please check to make sure these options are set correctly."
-		ewarn "Failure to do so may cause unexpected problems."
-	else
-		eend 0
-	fi
-	export LINUX_CONFIG_EXISTS_DONE="${old_LINUX_CONFIG_EXISTS_DONE}"
+	:
 }
 
 check_zlibinflate() {

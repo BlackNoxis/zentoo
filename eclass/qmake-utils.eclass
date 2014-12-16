@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qmake-utils.eclass
@@ -10,8 +10,8 @@
 # @DESCRIPTION:
 # Utility eclass providing wrapper functions for Qt4 and Qt5 qmake.
 
-if [[ ${___ECLASS_ONCE_QMAKE_UTILS} != "recur -_+^+_- spank" ]]; then
-___ECLASS_ONCE_QMAKE_UTILS="recur -_+^+_- spank"
+if [[ -z ${_QMAKE_UTILS_ECLASS} ]]; then
+_QMAKE_UTILS_ECLASS=1
 
 inherit eutils multilib toolchain-funcs
 
@@ -157,10 +157,12 @@ eqmake4() {
 
 	[[ -n ${EQMAKE4_EXCLUDE} ]] && eshopts_pop
 
-	"${EPREFIX}"/usr/bin/qmake \
+	# determine qmake binary location
+	local qmake_path=${EPREFIX}/usr/$(get_libdir)/qt4/bin/qmake
+	[[ ! -x ${qmake_path} ]] && qmake_path=${EPREFIX}/usr/bin/qmake
+
+	"${qmake_path}" \
 		-makefile \
-		QTDIR="${EPREFIX}"/usr/$(get_libdir) \
-		QMAKE="${EPREFIX}"/usr/bin/qmake \
 		QMAKE_AR="$(tc-getAR) cqs" \
 		QMAKE_CC="$(tc-getCC)" \
 		QMAKE_CXX="$(tc-getCXX)" \
@@ -214,9 +216,11 @@ eqmake5() {
 		-makefile \
 		QMAKE_AR="$(tc-getAR) cqs" \
 		QMAKE_CC="$(tc-getCC)" \
+		QMAKE_LINK_C="$(tc-getCC)" \
+		QMAKE_LINK_C_SHLIB="$(tc-getCC)" \
 		QMAKE_CXX="$(tc-getCXX)" \
 		QMAKE_LINK="$(tc-getCXX)" \
-		QMAKE_LINK_C="$(tc-getCC)" \
+		QMAKE_LINK_SHLIB="$(tc-getCXX)" \
 		QMAKE_OBJCOPY="$(tc-getOBJCOPY)" \
 		QMAKE_RANLIB= \
 		QMAKE_STRIP= \
