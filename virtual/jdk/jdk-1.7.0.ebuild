@@ -9,8 +9,5 @@ SLOT="1.7"
 KEYWORDS="amd64"
 
 RDEPEND="|| (
-		=dev-java/icedtea-bin-7*
-		=dev-java/icedtea-7*
 		=dev-java/oracle-jdk-bin-1.7.0*
-		=dev-java/soylatte-jdk-bin-7*
 	)"

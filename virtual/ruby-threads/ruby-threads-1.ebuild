@@ -7,7 +7,7 @@ USE_RUBY="ruby19"
 
 inherit ruby-ng
 
-DESCRIPTION="Virtual ebuild for a ruby interpreter with threading enabled."
+DESCRIPTION="Virtual ebuild for a ruby interpreter with threading enabled"
 HOMEPAGE=""
 SRC_URI=""
 

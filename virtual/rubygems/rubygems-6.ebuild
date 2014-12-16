@@ -16,7 +16,7 @@ SLOT="${USE_RUBY}"
 KEYWORDS="amd64"
 IUSE=""
 
-RDEPEND="dev-ruby/rubygems[ruby_targets_ruby20]"
+RDEPEND=">=dev-ruby/rubygems-2.0.2[ruby_targets_ruby20]"
 
 pkg_setup() { :; }
 src_unpack() { :; }

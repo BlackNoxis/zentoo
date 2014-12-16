@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND="
 	|| (
-		media-libs/mesa[${MULTILIB_USEDEP}]
+		>=media-libs/mesa-9.1.6[${MULTILIB_USEDEP}]
 		media-libs/opengl-apple
 	)"
 DEPEND=""

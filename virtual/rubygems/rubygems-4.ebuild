@@ -16,7 +16,7 @@ SLOT="${USE_RUBY}"
 KEYWORDS="amd64"
 IUSE=""
 
-RDEPEND="dev-ruby/rubygems[ruby_targets_ruby19]"
+RDEPEND=">=dev-ruby/rubygems-1.8.10-r1[ruby_targets_ruby19]"
 
 pkg_setup() { :; }
 src_unpack() { :; }
