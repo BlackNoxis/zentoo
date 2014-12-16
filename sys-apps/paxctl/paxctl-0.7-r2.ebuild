@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="4"
 
-inherit toolchain-funcs
+inherit toolchain-funcs eutils
 
 DESCRIPTION="Manages various PaX related program header flags for Elf32, Elf64, binaries"
 SRC_URI="http://pax.grsecurity.net/${P}.tar.bz2"
@@ -22,6 +22,7 @@ src_prepare() {
 	sed \
 		"s:--owner 0 --group 0::g" \
 		-i Makefile || die
+	epatch_user
 }
 
 src_compile() {

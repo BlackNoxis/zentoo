@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils libtool linux-info udev toolchain-funcs
 
 MY_P=${P/_/-}
-DESCRIPTION="An interface for filesystems implemented in userspace."
+DESCRIPTION="An interface for filesystems implemented in userspace"
 HOMEPAGE="http://fuse.sourceforge.net"
 SRC_URI="mirror://sourceforge/fuse/${MY_P}.tar.gz"
 
@@ -42,7 +42,7 @@ src_configure() {
 	econf \
 		INIT_D_PATH="${EPREFIX}/etc/init.d" \
 		MOUNT_FUSE_PATH="${EPREFIX}/sbin" \
-		UDEV_RULES_PATH="${EPREFIX}/$(udev_get_udevdir)/rules.d" \
+		UDEV_RULES_PATH="${EPREFIX}/$(get_udevdir)/rules.d" \
 		$(use_enable static-libs static) \
 		--disable-example
 }

@@ -16,7 +16,7 @@ KEYWORDS="amd64"
 IUSE="acl -cvs doc emacs git java nls +cxx ncurses openmp static-libs elibc_glibc"
 
 # only runtime goes multilib
-DEPEND="virtual/libiconv[${MULTILIB_USEDEP}]
+DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	dev-libs/libxml2
 	dev-libs/expat
 	acl? ( virtual/acl )

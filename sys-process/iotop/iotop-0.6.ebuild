@@ -4,14 +4,14 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_6,2_7,3_2,3_3} pypy pypy2_0 )
+PYTHON_COMPAT=( python{2_7,3_2,3_3,3_4} )
 PYTHON_REQ_USE="ncurses(+)"
 
 inherit distutils-r1 linux-info
 
 DESCRIPTION="Top-like UI used to show which process is using the I/O"
 HOMEPAGE="http://guichaz.free.fr/iotop/"
-SRC_URI="http://guichaz.free.fr/iotop//files/${P}.tar.bz2"
+SRC_URI="http://guichaz.free.fr/iotop/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

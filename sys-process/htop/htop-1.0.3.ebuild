@@ -20,7 +20,8 @@ KEYWORDS="amd64"
 IUSE="kernel_FreeBSD kernel_linux oom openvz unicode vserver"
 
 RDEPEND="sys-libs/ncurses[unicode?]"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 DOCS=( ChangeLog README )
 
@@ -28,6 +29,8 @@ CONFIG_CHECK="~TASKSTATS ~TASK_XACCT ~TASK_IO_ACCOUNTING ~CGROUPS"
 
 # config.h problems
 AUTOTOOLS_IN_SOURCE_BUILD=1
+
+PATCHES=("${FILESDIR}/${P}-tinfo.patch")
 
 pkg_setup() {
 	if use kernel_FreeBSD && ! [[ -f ${ROOT}/compat/linux/proc/stat && -f ${ROOT}/compat/linux/proc/meminfo ]]; then

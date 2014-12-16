@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS="-* amd64"
 IUSE="selinux"
 
-DEPEND="selinux? ( sec-policy/selinux-dmidecode )"
-RDEPEND="${DEPEND}"
+RDEPEND="selinux? ( sec-policy/selinux-dmidecode )"
+DEPEND=""
 
 src_prepare() {
 	sed -i \

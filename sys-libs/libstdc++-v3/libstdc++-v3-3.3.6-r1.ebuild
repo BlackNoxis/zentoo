@@ -101,6 +101,8 @@ do_filter_flags() {
 	# Bug #442784
 	filter-flags '-W*'
 
+	filter-flags -frecord-gcc-switches
+
 	# ...sure, why not?
 	strip-unsupported-flags
 
@@ -119,7 +121,7 @@ SLOT="5"
 KEYWORDS="amd64"
 IUSE="multilib nls"
 
-DEPEND="sys-devel/bison"
+DEPEND="<sys-devel/bison-3"
 RDEPEND=""
 
 S=${WORKDIR}/gcc-${PV}

@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -8,7 +8,7 @@ inherit eutils multilib autotools
 
 KEYWORDS="amd64"
 
-DESCRIPTION="NSS MySQL Library."
+DESCRIPTION="NSS MySQL Library"
 HOMEPAGE="http://libnss-mysql.sourceforge.net/"
 SRC_URI="http://libnss-mysql.sourceforge.net/snapshot/${PN}-${PV/1.5_p/}.tgz"
 LICENSE="GPL-2"
