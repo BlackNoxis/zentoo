@@ -28,6 +28,7 @@ RDEPEND="
 	>=media-libs/gd-2.0.34[fontconfig,jpeg,png,truetype,zlib]
 	>=media-libs/libpng-1.2:0
 	!<=sci-chemistry/cluster-1.3.081231
+	sys-devel/libtool
 	virtual/jpeg:0
 	virtual/libiconv
 	X? (
@@ -47,6 +48,7 @@ RDEPEND="
 	gts?	( sci-libs/gts )
 	lasi?	( media-libs/lasi )
 	pdf?	( app-text/poppler )
+	perl?   ( dev-lang/perl:= )
 	python?	( ${PYTHON_DEPS} )
 	qt4?	(
 		dev-qt/qtcore:4

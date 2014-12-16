@@ -20,8 +20,5 @@ app-emulation/libvirt lvm lxc pcap
 dev-lang/php cli fpm
 app-admin/eselect-php fpm
 
-# default collectd modules
-app-admin/collectd aggregation cgroups conntrack contextswitch cpu curl curl_json curl_xml df disk dns entropy exec filecount hddtemp interface iptables irq java load logfile memory netlink network numa ping processes protocols python rrdtool swap syslog table tail tcpconns unixsock uptime users vmem
-
 # lots of git tools depend on perl :-(
 dev-vcs/git perl

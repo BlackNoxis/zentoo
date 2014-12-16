@@ -1,13 +1,13 @@
 # sane defaults
 PKGDIR="/usr/portage/packages"
-PORTAGE_BINHOST="http://mirror.zenops.net/zentoo/${ARCH}/packages"
+PORTAGE_BINHOST="http://mirror.zenops.net/argent/${ARCH}/packages"
 FEATURES="splitdebug"
 
 # disable masked USE flags
 USE="${USE} -dri -vhosts"
 
 # add a bunch of global USE flags
-USE="${USE} bash-completion bzip2 caps cups fontconfig postscript idn jpeg pcre png svg syslog systemd tiff truetype urandom vim-syntax"
+USE="${USE} bash-completion bzip2 caps cups fontconfig postscript idn jpeg pcre png svg syslog systemd tiff truetype urandom vim-syntax udev"
 
 # create and use binary packages
 EMERGE_DEFAULT_OPTS="--quiet --quiet-build --with-bdeps=y --binpkg-respect-use=y --rebuilt-binaries=n --keep-going"
@@ -22,8 +22,8 @@ VIDEO_CARDS=""
 # default GRUB2 modules
 GRUB_PLATFORMS="efi-64 pc"
 
-# default collectd plugins
-COLLECTD_PLUGINS="df aggregation cgroups conntrack contextswitch cpu curl curl_json curl_xml disk dns entropy exec filecount hddtemp interface ipmi iptables irq java load logfile memory network numa ping processes protocols python swap table tail tcpconns unixsock uptime users vmem"
-
 # do not install old init cruft
-PKG_INSTALL_MASK="/etc/init.d"
+PKG_INSTALL_MASK="${PKG_INSTALL_MASK} /etc/init.d /etc/conf.d /etc/local.d /etc/xinetd.d"
+
+# do not install old cron cruft
+PKG_INSTALL_MASK="${PKG_INSTALL_MASK} /etc/cron.d /etc/cron.daily /etc/cron.hourly /etc/cron.monthly /etc/cron.weekly"

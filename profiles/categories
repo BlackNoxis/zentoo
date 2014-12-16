@@ -28,7 +28,6 @@ dev-util
 dev-vcs
 gnome-base
 mail-client
-mail-filter
 mail-mta
 media-fonts
 media-gfx
@@ -56,7 +55,6 @@ sys-libs
 sys-power
 sys-process
 virtual
-www-apache
 www-client
 www-misc
 www-servers

@@ -1,6 +1,6 @@
 # skip unnecessary dependencies
-app-admin/collectd collectd_plugins_gmond collectd_plugins_notify_desktop collectd_plugins_notify_email collectd_plugins_onewire collectd_plugins_oracle collectd_plugins_routeros collectd_plugins_tokyotyrant collectd_plugins_varnish collectd_plugins_vserver collectd_plugins_libvirt collectd_plugins_ipmi collectd_plugins_nut
-app-admin/syslog-ng dbi json smtp sql
+app-arch/dpkg nls
+app-admin/sysstat cron
 app-editors/joe xterm
 app-emulation/docker aufs
 app-emulation/qemu tls usbredir xen
@@ -19,34 +19,36 @@ dev-python/ipython smp octave matplotlib nbconvert notebook
 dev-python/psycopg mxdatetime
 dev-util/boost-build python
 dev-vcs/bzr curl
+dev-vcs/git cgi
 dev-vcs/subversion webdav-serf
 gnome-base/librsvg tools
 media-gfx/imagemagick autotrace fftw raw opencl
 media-libs/harfbuzz graphite
 media-libs/libsdl audio aalib
 media-libs/mesa xorg
-net-analyzer/nagios-plugins ups nagios-game nagios-ping
+net-analyzer/nagios-plugins ups nagios-game nagios-ping snmp jabber
 net-analyzer/net-snmp netlink
 net-analyzer/nmap lua zenmap
 net-analyzer/rrdtool dbi
 net-analyzer/tcpdump smi
 net-dns/pdns opendbx sqlite
+net-ftp/lftp verify-file
 net-libs/libpcap canusb netlink
 net-libs/zeromq pgm
 net-mail/dovecot lucene
 net-misc/curl metalink rtmp ssh
 sys-apps/acl nfs
-sys-apps/systemd http qrcode ssl
+sys-apps/help2man nls
+sys-apps/systemd http qrcode ssl terminal
 sys-devel/gcc graphite
 sys-fs/btrfs-progs debug-utils
 sys-fs/udev extras
 sys-kernel/dracut dracut_modules_biosdevname dracut_modules_dmraid dracut_modules_gensplash dracut_modules_multipath dracut_modules_iscsi dracut_modules_nbd dracut_modules_plymouth dracut_modules_bootchart dracut_modules_cifs
 www-servers/tornado curl
-www-servers/uwsgi uwsgi_plugins_rsyslog uwsgi_plugins_alarm_xmpp uwsgi_plugins_rrdtool
+www-servers/uwsgi uwsgi_plugins_rsyslog uwsgi_plugins_alarm_xmpp uwsgi_plugins_rrdtool uwsgi_plugins_rados
 x11-libs/libSM uuid
 
 # do not allow perl cruft for these packages
-app-admin/collectd perl collectd_plugins_perl
 app-admin/sudo ldap
 app-arch/cabextract extra-tools
 app-editors/vim perl
@@ -59,7 +61,7 @@ net-analyzer/rrdtool perl
 net-libs/liboping perl
 net-nds/openldap perl
 sys-apps/util-linux perl
-www-servers/nginx nginx_modules_http_perl
+www-servers/nginx nginx_modules_http_perl nginx_modules_http_security
 www-servers/uwsgi perl
 
 # do not support X11 with these applications

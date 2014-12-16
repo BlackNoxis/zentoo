@@ -1,11 +1,5 @@
 app-admin/chef
-app-emulation/virtualbox
-app-office/openerp
 dev-db/mysql-init-scripts
-dev-ruby/mixlib-config
-dev-ruby/mixlib-shellout
-dev-ruby/ohai
-dev-ruby/rubygems
 mail-mta/postfix
 net-dns/pdns
 sys-apps/newrelic-sysmond
@@ -18,6 +12,7 @@ sys-fs/zfs
 sys-fs/zfs-kmod
 virtual/editor
 virtual/linux-sources
+virtual/logger
 virtual/mta
 virtual/service-manager
 virtual/udev

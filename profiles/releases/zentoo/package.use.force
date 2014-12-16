@@ -13,3 +13,6 @@ dev-libs/openssl -bindist
 
 # we almost always want to use S3 for backup
 app-backup/duplicity s3
+
+# enable more features
+sys-apps/systemd elfutils lz4

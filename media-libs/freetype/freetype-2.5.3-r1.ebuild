@@ -22,7 +22,7 @@ REQUIRED_USE="harfbuzz? ( auto-hinter )"
 
 CDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
-	harfbuzz? ( >=media-libs/harfbuzz-0.9.12[truetype,${MULTILIB_USEDEP}] )
+	harfbuzz? ( >=media-libs/harfbuzz-0.9.19[truetype,${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.2.51[${MULTILIB_USEDEP}] )
 	utils? (
 		X? (
