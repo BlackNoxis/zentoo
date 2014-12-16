@@ -24,8 +24,7 @@ RDEPEND="${DEPEND}
 	!<=app-portage/gentoolkit-dev-0.2.7
 	|| ( >=sys-apps/coreutils-8.15 app-misc/realpath sys-freebsd/freebsd-bin )
 	sys-apps/gawk
-	sys-apps/grep
-	virtual/python-argparse[${PYTHON_USEDEP}]"
+	sys-apps/grep"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-revdep-rebuild-484340.patch

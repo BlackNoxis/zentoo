@@ -76,7 +76,7 @@ src_install () {
 	for i in *; do
 		dosym /usr/sbin/${i} /usr/sbin/${i}2
 	done
-	popd "${D}"/usr/sbin/ >/dev/null
+	popd >/dev/null
 
 	# Provide a symlink for ab-ssl
 	if use ssl; then

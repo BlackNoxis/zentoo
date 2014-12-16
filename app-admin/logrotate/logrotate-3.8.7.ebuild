@@ -15,17 +15,19 @@ SLOT="0"
 KEYWORDS="amd64"
 IUSE="acl selinux"
 
-RDEPEND="
+CDEPEND="
 	>=dev-libs/popt-1.5
 	selinux? (
 		sys-libs/libselinux
-		sec-policy/selinux-logrotate
 	)
 	acl? ( virtual/acl )"
 
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
-
+DEPEND="${CDEPEND}
+	>=sys-apps/sed-4
+"
+RDEPEND="${CDEPEND}
+	selinux? ( sec-policy/selinux-logrotate )
+"
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-datehack.patch \

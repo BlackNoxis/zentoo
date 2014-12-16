@@ -3,9 +3,7 @@
 # $Header: $
 
 EAPI=5
-
-PYTHON_COMPAT=( python{2_6,2_7,3_2,3_3} )
-
+PYTHON_COMPAT=( python{2_6,2_7,3_2,3_3,3_4} )
 inherit python-r1
 
 DESCRIPTION="Enhanced df with colors"
@@ -18,7 +16,6 @@ KEYWORDS="amd64"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}"
 

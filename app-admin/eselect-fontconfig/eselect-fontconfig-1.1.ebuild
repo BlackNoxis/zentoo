@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-DESCRIPTION="An eselect module to manage /etc/fonts/conf.d symlinks."
+DESCRIPTION="An eselect module to manage /etc/fonts/conf.d symlinks"
 HOMEPAGE="http://www.gentoo.org"
 SRC_URI="mirror://gentoo/fontconfig.eselect-${PV}.bz2"
 

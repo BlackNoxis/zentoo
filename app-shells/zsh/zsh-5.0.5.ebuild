@@ -146,7 +146,7 @@ pkg_postinst() {
 		# should link to http://www.gentoo.org/doc/en/zsh.xml
 		echo
 		elog "If you want to enable Portage completions and Gentoo prompt,"
-		elog "emerge app-shells/zsh-completion and add"
+		elog "emerge app-shells/gentoo-zsh-completions and add"
 		elog "	autoload -U compinit promptinit"
 		elog "	compinit"
 		elog "	promptinit; prompt gentoo"

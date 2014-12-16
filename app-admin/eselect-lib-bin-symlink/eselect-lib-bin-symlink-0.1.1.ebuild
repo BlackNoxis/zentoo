@@ -8,7 +8,7 @@ inherit autotools-utils
 
 DESCRIPTION="An eselect library to manage executable symlinks"
 HOMEPAGE="https://bitbucket.org/mgorny/eselect-lib-bin-symlink/"
-SRC_URI="mirror://bitbucket/mgorny/${PN}/downloads/${P}.tar.bz2"
+SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
