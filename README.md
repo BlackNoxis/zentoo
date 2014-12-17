@@ -6,7 +6,7 @@ emphasis on server deployment on x86_64 platforms.
 Just like Gentoo Linux it is a source based Linux distribution with a live
 package tree. Argent Linux is at the same time more conservative and more
 bleeding-edge. Package updates tend to happen in batches that are known to work
-and are supported by [ZenOps Chef](https://github.com/argentlinux.org/chef). Still
+and are supported by [ZenOps Chef](https://github.com/rogentoslinux.org/chef). Still
 package versions tend to be more up-to-date and new server-related packages
 have been added to the tree.
 
@@ -25,7 +25,7 @@ boot.
 
 Argent provides stages and images that can be used in the same way as Gentoo.
 You can simply follow the [Gentoo Handbook](http://www.gentoo.org/doc/en/handbook/handbook-amd64.xml)
-or you can use tools like [Quickstart](https://github.com/argent/quickstart) to
+or you can use tools like [Quickstart](https://github.com/rogentos/quickstart) to
 bootstrap your servers.
 
 Download Argent stages and images from the [ZenOps
@@ -41,7 +41,7 @@ To start contributing to Argent you need to clone the repository including
 submodules:
 
 ```
-git clone --recursive https://github.com/argent/argent
+git clone --recursive https://github.com/rogentos/argent
 ```
 
 The repository contains various helper scripts in the `scripts` folder which
@@ -79,8 +79,8 @@ the repository. A push will trigger the following tests:
 * `./scripts/generate-cache`
 * update all distfiles
 * a full build of Argent stages and images using
-  [metro](https://github.com/argent/metro) and
-  [packer](https://github.com/argentlinux.org/packer-templates)
+  [metro](https://github.com/rogentos/metro) and
+  [packer](https://github.com/rogentoslinux.org/packer-templates)
 
 ### Using Gentoo ebuilds
 

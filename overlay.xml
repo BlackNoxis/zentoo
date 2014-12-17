@@ -4,12 +4,12 @@
   <repo quality="stable" status="unofficial">
     <name>argent</name>
     <description>Argent Linux</description>
-    <homepage>https://github.com/argent/argent</homepage>
+    <homepage>https://github.com/rogentos/argent</homepage>
     <owner type="project">
       <email>stefan.cristian at argentlinux.org.net</email>
       <name>Stefan Cristian B</name>
     </owner>
-    <source type="git">git://github.com/argent/argent.git</source>
-    <feed>https://github.com/argent/argent/commits/master.atom</feed>
+    <source type="git">git://github.com/rogentos/argent.git</source>
+    <feed>https://github.com/rogentos/argent/commits/master.atom</feed>
   </repo>
 </repositories>
