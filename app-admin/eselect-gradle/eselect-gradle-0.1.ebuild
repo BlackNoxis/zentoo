@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="Manage multiple Gradle versions on one system"
-HOMEPAGE="http://www.argentlinux.ro"
+HOMEPAGE="http://www.zentoo.org"
 SRC_URI=""
 
 LICENSE="GPL-2"

@@ -1,6 +1,6 @@
 # sane defaults
 PKGDIR="/usr/portage/packages"
-PORTAGE_BINHOST="http://mirror.zenops.net/argent/${ARCH}/packages"
+PORTAGE_BINHOST="http://mirror.zenops.net/zentoo/${ARCH}/packages"
 FEATURES="splitdebug"
 
 # disable masked USE flags

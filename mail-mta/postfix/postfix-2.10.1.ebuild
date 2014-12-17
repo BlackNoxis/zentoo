@@ -66,7 +66,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/postfix-argent.patch
+	epatch "${FILESDIR}"/postfix-zentoo.patch
 
 	if use vda; then
 		epatch "${DISTDIR}"/${VDA_P}.patch

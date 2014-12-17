@@ -2,14 +2,14 @@
 <!DOCTYPE repositories SYSTEM "repositories.dtd">
 <repositories xmlns="" version="1.0">
   <repo quality="stable" status="unofficial">
-    <name>argent</name>
-    <description>Argent Linux</description>
-    <homepage>https://github.com/rogentos/argent</homepage>
+    <name>zentoo</name>
+    <description>Zentoo Linux</description>
+    <homepage>https://github.com/zentoo/zentoo</homepage>
     <owner type="project">
-      <email>stefan.cristian at argentlinux.org.net</email>
-      <name>Stefan Cristian B</name>
+      <email>bb@zenops.net</email>
+      <name>Benedikt Böhm</name>
     </owner>
-    <source type="git">git://github.com/rogentos/argent.git</source>
-    <feed>https://github.com/rogentos/argent/commits/master.atom</feed>
+    <source type="git">git://github.com/zentoo/zentoo.git</source>
+    <feed>https://github.com/zentoo/zentoo/commits/master.atom</feed>
   </repo>
 </repositories>
