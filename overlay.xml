@@ -6,8 +6,8 @@
     <description>Argent Linux</description>
     <homepage>https://github.com/argent/argent</homepage>
     <owner type="project">
-      <email>bb@zenops.net</email>
-      <name>Benedikt Böhm</name>
+      <email>stefan.cristian at argentlinux.org.net</email>
+      <name>Stefan Cristian B</name>
     </owner>
     <source type="git">git://github.com/argent/argent.git</source>
     <feed>https://github.com/argent/argent/commits/master.atom</feed>

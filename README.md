@@ -6,7 +6,7 @@ emphasis on server deployment on x86_64 platforms.
 Just like Gentoo Linux it is a source based Linux distribution with a live
 package tree. Argent Linux is at the same time more conservative and more
 bleeding-edge. Package updates tend to happen in batches that are known to work
-and are supported by [ZenOps Chef](https://github.com/zenops/chef). Still
+and are supported by [ZenOps Chef](https://github.com/argentlinux.org/chef). Still
 package versions tend to be more up-to-date and new server-related packages
 have been added to the tree.
 
@@ -29,11 +29,11 @@ or you can use tools like [Quickstart](https://github.com/argent/quickstart) to
 bootstrap your servers.
 
 Download Argent stages and images from the [ZenOps
-mirror](http://mirror.zenops.net/argent). This mirror also contains the portage
+mirror](http://mirror.argentlinux.org.net/argent). This mirror also contains the portage
 rsync module and distfiles:
 
-* `SYNC="rsync://mirror.zenops.net/argent-portage"`
-* `GENTOO_MIRRORS="http://mirror.zenops.net/argent"`
+* `SYNC="rsync://mirror.argentlinux.org.net/argent-portage"`
+* `GENTOO_MIRRORS="http://mirror.argentlinux.org.net/argent"`
 
 ## Contributing
 
@@ -80,7 +80,7 @@ the repository. A push will trigger the following tests:
 * update all distfiles
 * a full build of Argent stages and images using
   [metro](https://github.com/argent/metro) and
-  [packer](https://github.com/zenops/packer-templates)
+  [packer](https://github.com/argentlinux.org/packer-templates)
 
 ### Using Gentoo ebuilds
 
