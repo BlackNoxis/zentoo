@@ -14,11 +14,10 @@
 inherit eutils multiprocessing unpacker
 [[ ${CATEGORY} == "perl-core" ]] && inherit alternatives
 
-PERL_EXPF="src_unpack src_compile src_test src_install"
+PERL_EXPF="src_unpack src_prepare src_configure src_compile src_test src_install"
 
 case "${EAPI:-0}" in
 	4|5)
-		PERL_EXPF+=" src_prepare src_configure"
 		[[ ${CATEGORY} == "perl-core" ]] && \
 			PERL_EXPF+=" pkg_postinst pkg_postrm"
 
@@ -74,7 +73,7 @@ case "${PERL_EXPORT_PHASE_FUNCTIONS:-yes}" in
 		;;
 esac
 
-LICENSE="${LICENSE:-|| ( Artistic GPL-1 GPL-2 GPL-3 )}"
+LICENSE="${LICENSE:-|| ( Artistic GPL-1+ )}"
 
 if [[ -n ${MY_PN} || -n ${MY_PV} || -n ${MODULE_VERSION} ]] ; then
 	: ${MY_P:=${MY_PN:-${PN}}-${MY_PV:-${MODULE_VERSION:-${PV}}}}
@@ -104,7 +103,6 @@ perl-module_src_unpack() {
 	debug-print-function $FUNCNAME "$@"
 
 	unpacker_src_unpack
-	has src_prepare ${PERL_EXPF} || perl-module_src_prepare
 }
 
 # @FUNCTION: perl-module_src_prepare
@@ -114,7 +112,6 @@ perl-module_src_unpack() {
 # This function is to be called during the ebuild src_prepare() phase.
 perl-module_src_prepare() {
 	debug-print-function $FUNCNAME "$@"
-	has src_prepare ${PERL_EXPF} && \
 	[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
 	debug-print "$FUNCNAME: applying user patches"
 	epatch_user
@@ -133,22 +130,7 @@ perl-module_src_prepare() {
 # This function is to be called during the ebuild src_configure() phase.
 perl-module_src_configure() {
 	debug-print-function $FUNCNAME "$@"
-	perl-module_src_prep
-}
 
-# @FUNCTION: perl-module_src_prep
-# @USAGE: perl-module_src_prep
-# @DESCRIPTION:
-# Configure the ebuild sources (bis).
-#
-# This function is still around for historical reasons 
-# and will be soon deprecated.
-#
-# Please use the function above instead, perl-module_src_configure().
-#
-# TODO: Move code to perl-module_src_configure().
-perl-module_src_prep() {
-	debug-print-function $FUNCNAME "$@"
 	[[ ${SRC_PREP} = yes ]] && return 0
 	SRC_PREP="yes"
 
@@ -201,6 +183,21 @@ perl-module_src_prep() {
 	fi
 }
 
+# @FUNCTION: perl-module_src_prep
+# @USAGE: perl-module_src_prep
+# @DESCRIPTION:
+# Configure the ebuild sources (bis).
+#
+# This function is still around for historical reasons 
+# and will be soon deprecated.
+#
+# Please use the function above instead, perl-module_src_configure().
+perl-module_src_prep() {
+	debug-print-function $FUNCNAME "$@"
+	ewarn "perl-modules.eclass: perl-module_src_prep is deprecated and will be removed. Please use perl-module_src_configure instead."
+	perl-module_src_configure
+}
+
 # @FUNCTION: perl-module_src_compile
 # @USAGE: perl-module_src_compile
 # @DESCRIPTION:
@@ -209,8 +206,6 @@ perl-module_src_prep() {
 perl-module_src_compile() {
 	debug-print-function $FUNCNAME "$@"
 	perl_set_version
-
-	has src_configure ${PERL_EXPF} || perl-module_src_prep
 
 	if [[ $(declare -p mymake 2>&-) != "declare -a mymake="* ]]; then
 		local mymake_local=(${mymake})

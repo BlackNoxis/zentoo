@@ -11,10 +11,7 @@ www-servers/uwsgi python
 x11-libs/cairo X
 x11-libs/gdk-pixbuf X
 x11-libs/pango X
-dev-db/postgresql-server uuid
-
-# libvirt drivers and tools we support
-app-emulation/libvirt lvm lxc pcap
+dev-db/postgresql uuid
 
 # default PHP SAPIs
 dev-lang/php cli fpm

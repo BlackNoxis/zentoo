@@ -14,6 +14,7 @@ dev-lang/php sqlite
 dev-libs/gecode gist
 dev-libs/glib utils systemtap
 dev-libs/libnatspec python
+dev-libs/ossp-uuid php
 dev-libs/ppl lpsol
 dev-python/ipython smp octave matplotlib nbconvert notebook
 dev-python/psycopg mxdatetime

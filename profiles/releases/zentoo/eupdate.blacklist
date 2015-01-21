@@ -1,6 +1,5 @@
 app-admin/chef
 dev-db/mysql-init-scripts
-mail-mta/postfix
 net-dns/pdns
 sys-apps/newrelic-sysmond
 sys-apps/openrc
@@ -13,6 +12,5 @@ sys-fs/zfs-kmod
 virtual/editor
 virtual/linux-sources
 virtual/logger
-virtual/mta
 virtual/service-manager
 virtual/udev

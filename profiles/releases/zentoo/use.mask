@@ -60,6 +60,7 @@ directfb
 djvu
 dmx
 doc
+dovecot-sasl
 dri
 dssi
 dts
@@ -155,6 +156,10 @@ lame
 lash
 latex
 lcms
+ldap
+ldap-bind
+ldap-sasl
+ldapdb
 ldirectord
 ldns
 libcaca
@@ -171,6 +176,7 @@ lirc
 livecd
 llvm
 lm_sensors
+lmdb
 loop-aes
 lzo
 m17n-lib
@@ -228,6 +234,7 @@ opencl
 openct
 openexr
 opengl
+openldap
 openntpd
 openrc
 oracle
@@ -265,6 +272,7 @@ regression-test
 rpm
 samba
 sapdb
+sasl
 savedconfig
 scanner
 sctp
@@ -391,6 +399,7 @@ ruby_targets_rbx
 ruby_targets_ree18
 
 # uwsgi plugins
+uwsgi_plugins_ldap
 uwsgi_plugins_router_spnego
 
 # unsupported linguas
